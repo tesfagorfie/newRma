@@ -1,0 +1,178 @@
+#%RAML 1.0 Extension
+extends: new-online-shopping.raml
+usage: only for admin user
+
+/products:
+  get:
+    body:
+      application/json:
+        example:
+          {}
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {}
+  post:
+    body:
+      application/json:
+        example: !include example/product.raml
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                "message": "product added"
+              }
+  put:
+    body:
+      application/json:
+        example:
+          [
+            
+              {"product":10},
+              {"product":12}
+            
+          ]
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "message": "products updated"
+              }
+                  
+                      
+  /{productid}:                                  
+    put:
+      body:
+        application/json:
+         example:
+          {
+            "productid": 2
+          }
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {
+                  "message": "product updated"
+                }
+    delete:
+      body:
+        application/json:
+          example:
+            {
+              "productid": 2
+            }  
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {
+                  "message": "productid 2 is deleted"
+
+                }
+/users:
+  get:
+    body:
+      application/json:
+        example:
+          {}
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {}
+                    
+  post:
+    body:
+      application/json:
+        example:
+          {}
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {}
+
+/orders:
+  get:
+    body:
+      application/json:
+        example:
+          {}
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {}
+  post:
+    body:
+      application/json:
+        example:
+          {}
+    responses:
+      201:
+          body:
+            application/json:
+              example:
+                {}  
+  
+/category:
+  get:
+    body:
+      application/json:
+        example:
+          {}
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {}
+  post:
+    body:
+      application/json:
+        example:
+          {}
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {}
+  
+  put:
+    body:
+      application/json:
+        example:
+          {}
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {}
+  delete:
+    body:
+      application/json:
+        example:
+          {}
+    responses:
+      200:
+       body:
+        application/json:
+          example:
+            {}             
+                                                                                                                                                               
+
+                                                                                    

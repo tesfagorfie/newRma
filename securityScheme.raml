@@ -1,0 +1,23 @@
+#%RAML 1.0 SecurityScheme
+type: Basic Authentication
+description: The API use Basic Authorized method
+describedBy: 
+  headers:
+    Authorization:
+      description: the user have be authorized to send any request
+      required: false
+  queryParameters:
+    username:
+      description: the user will send valid username
+      required: false
+    password:
+      description:   the user will send valid password   
+      required: false 
+  responses:
+    401:
+      description: unauthorized user
+    403:
+      description: forbidden  
+    
+  
+  

@@ -1,0 +1,99 @@
+#%RAML 1.0
+title: new-online-shopping
+  
+uses:
+  mylibrary: library.raml
+/users:
+  securedBy:
+    - mylibrary.mysec
+  post:
+    body:
+      application/json:
+        example:
+          {
+            "username": "Abebe",
+            "email": "Abebe@gmail.com"
+          }
+  type:
+    mylibrary.myResource:
+      exampleReference1: 
+           {
+              "uid":2345
+            }     
+  is:
+      - mylibrary.errorResponse  
+/products:
+  securedBy:
+    - mylibrary.mysec   
+  description: fetch products      
+  get:
+    description: 
+    headers:
+      cookie:
+        required: false
+        type: string
+      response:
+        required: false
+      200:
+        description: ok
+      401:
+        description: unauthoried
+        required: false
+      connection-type:
+        description: multiple connection is allowed
+      properties:
+        required: false              
+    queryParameters:
+        price:
+          type: integer
+          required: false
+          example: 10000      
+        name:
+          type: string 
+          example: dell
+          description: product name
+          maxLength: 10
+          minLength: 2
+          required: false
+    responses:
+      200:
+        body:
+          application/json:
+            type: mylibrary.dataTpyeExample []
+            example: !include example/products.raml
+    is:
+      - mylibrary.errorResponse
+
+  /{productid}:
+    description: fetch product by id
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: mylibrary.dataTpyeExample  
+              example: !include example/product.raml
+  
+
+/orders:
+  post:
+    body:
+      application/json:
+        example:
+          {
+            "orderid":454,
+            "uid":656,
+            "name":"dell",
+            "date": "2022-02-10",
+            "status": "pending"
+          }
+  type:
+    mylibrary.myResource:
+     exampleReference1:
+       {
+         "message": "order placed"
+       }
+
+/category:
+  get:
+                     

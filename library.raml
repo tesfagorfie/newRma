@@ -1,0 +1,12 @@
+#%RAML 1.0 Library
+usage:  Collection of API fragmentation collections
+
+types:  
+  dataTpyeExample: !include datatype/product.raml    
+
+traits:
+  errorResponse: !include trait/response.raml
+resourceTypes:
+  myResource: !include resource/resourceType.raml
+securitySchemes:
+  mysec: !include securityScheme.raml
